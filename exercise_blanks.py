@@ -406,6 +406,16 @@ def train_model(model, data_manager, n_epochs, lr, weight_decay=0.):
     return train_losses, train_accs, val_losses, val_accs
 
 
+def plots1(title, train_losses, train_accs, val_losses, val_accs):
+    print("Train Losses")
+    print(train_losses)
+    print("Train Accs")
+    print(train_accs)
+    print("Val Losses")
+    print(val_losses)
+    print("Val Accs")
+    print(val_accs)
+
 def plots(title, train_losses, train_accs, val_losses, val_accs):
     plt.plot(range(1, len(train_accs) + 1), train_accs)
     plt.plot(range(1, len(val_accs) + 1), val_accs)
@@ -439,7 +449,8 @@ def train_log_linear_with_one_hot():
         if results[3][-1] > best_acc:
             best_model = model
             best_title = title
-        plots(title, *results)
+
+        plots1(title, *results)
 
     test_loader = data_manager.get_torch_iterator(TEST)
     test_loss, test_acc = evaluate(best_model, test_loader, nn.BCEWithLogitsLoss())
