@@ -325,8 +325,8 @@ def train_epoch(model, data_iterator, optimizer, criterion):
     :param optimizer: the optimizer object for the training process.
     :param criterion: the criterion object for the training process.
     """
-    losses = np.array([])
-    accs = np.array([])
+    losses = []
+    accs = []
     for i, (x_tensor, y_tensor) in enumerate(data_iterator):
         optimizer.zero_grad()
         y = model(x_tensor.float())
@@ -334,10 +334,10 @@ def train_epoch(model, data_iterator, optimizer, criterion):
         loss.backward()
         pred = model.predict(x_tensor.float())
         acc = binary_accuracy(pred, y_tensor.float())
-        np.append(losses, loss.item())
-        np.append(accs, acc)
+        losses.append(loss.item())
+        accs.append(acc)
         optimizer.step()
-        if i % 10 == 0:
+        if i % 100 == 0:
             print("loss at step {}: {}".format(i, loss.item()))
     return np.average(accs), np.average(losses)
 
@@ -350,16 +350,16 @@ def evaluate(model, data_iterator, criterion):
     :param criterion: the loss criterion used for evaluation
     :return: tuple of (average loss over all examples, average accuracy over all examples)
     """
-    losses = np.array([])
-    accs = np.array([])
+    losses = []
+    accs = []
     for i, (x_tensor, y_tensor) in enumerate(data_iterator):
         y = model(x_tensor.float())
         loss = criterion(y, y_tensor.float())
         pred = model.predict(x_tensor.float())
         acc = binary_accuracy(pred, y_tensor.float())
-        np.append(losses, loss.item())
-        np.append(accs, acc)
-        if i % 1000 == 0:
+        losses.append(loss.item())
+        accs.append(acc)
+        if i % 100 == 0:
             print("loss at step {}: {}".format(i, loss.item()))
     return np.average(accs), np.average(losses)
 
