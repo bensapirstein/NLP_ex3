@@ -9,6 +9,7 @@ import operator
 import data_loader
 import pickle
 import tqdm
+import matplotlib.pyplot as plt
 
 # ------------------------------------------- Constants ----------------------------------------
 
@@ -338,7 +339,7 @@ def train_epoch(model, data_iterator, optimizer, criterion):
         accs.append(acc)
         optimizer.step()
         if i % 100 == 0:
-            print("loss at step %d: %.2f" % (i+1, loss.item()))
+            print("loss at step %d: %.4f" % (i + 1, loss.item()))
     return np.average(accs), np.average(losses)
 
 
@@ -359,8 +360,6 @@ def evaluate(model, data_iterator, criterion):
         acc = binary_accuracy(pred, y_tensor.float())
         losses.append(loss.item())
         accs.append(acc)
-        if i % 100 == 0:
-            print("loss at step %d: %.2f"%(i, loss.item()))
     return np.average(accs), np.average(losses)
 
 
@@ -402,19 +401,50 @@ def train_model(model, data_manager, n_epochs, lr, weight_decay=0.):
         train_accs.append(train_acc)
         val_losses.append(val_loss)
         val_accs.append(val_acc)
-        print("Epoch %d: Train Loss: %.2f Train Acc: %.2f Val Loss: %.2f Val Acc: %.2f" %
+        print("Epoch %d: Train Loss: %.3f Train Acc: %.2f Val Loss: %.3f Val Acc: %.2f" %
               (epoch + 1, train_loss, train_acc, val_loss, val_acc))
+    return train_losses, train_accs, val_losses, val_accs
+
+
+def plots(title, train_losses, train_accs, val_losses, val_accs):
+    plt.plot(range(1, len(train_accs) + 1), train_accs)
+    plt.plot(range(1, len(val_accs) + 1), val_accs)
+    plt.title(title + " - Accuracy")
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'val'], loc='upper left')
+    plt.show()
+    # summarize history for loss
+    plt.plot(range(1, len(train_losses) + 1), train_losses)
+    plt.plot(range(1, len(val_losses) + 1), val_losses)
+    plt.title(title + " - Loss")
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'val'], loc='upper left')
+    plt.show()
 
 
 def train_log_linear_with_one_hot():
     """
     Here comes your code for training and evaluation of the log linear model with one hot representation.
     """
+    confs = [("LogLinear with w=0", 0), ("LogLinear with w=0.0001", 0.0001), ("LogLinear with w=0.001", 0.001)]
     data_manager = DataManager(ONEHOT_AVERAGE, batch_size=64)
-    model = LogLinear(data_manager.get_input_shape()[0])
-    train_model(model, data_manager, 20, 0.01)
+    best_model = None
+    best_acc = 0
+    best_title = ""
+    for (title, decay_rate) in confs:
+        model = LogLinear(data_manager.get_input_shape()[0])
+        results = train_model(model, data_manager, 20, 0.01, decay_rate)
+        if results[3][-1] > best_acc:
+            best_model = model
+            best_title = title
+        plots(title, *results)
+
     test_loader = data_manager.get_torch_iterator(TEST)
-    val_loss, val_acc = evaluate(model, test_loader, nn.BCELoss())
+    test_loss, test_acc = evaluate(best_model, test_loader, nn.BCEWithLogitsLoss())
+    print("Best model is " + best_title)
+    print("Test Loss: %d Test Acc: %d" % (test_loss, test_acc))
 
 
 def train_log_linear_with_w2v():
