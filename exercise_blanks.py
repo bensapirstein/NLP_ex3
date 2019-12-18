@@ -338,7 +338,7 @@ def train_epoch(model, data_iterator, optimizer, criterion):
         accs.append(acc)
         optimizer.step()
         if i % 100 == 0:
-            print("loss at step {}: {}".format(i, loss.item()))
+            print("loss at step %d: %.2f" % (i+1, loss.item()))
     return np.average(accs), np.average(losses)
 
 
@@ -360,7 +360,7 @@ def evaluate(model, data_iterator, criterion):
         losses.append(loss.item())
         accs.append(acc)
         if i % 100 == 0:
-            print("loss at step {}: {}".format(i, loss.item()))
+            print("loss at step %d: %.2f"%(i, loss.item()))
     return np.average(accs), np.average(losses)
 
 
@@ -396,14 +396,14 @@ def train_model(model, data_manager, n_epochs, lr, weight_decay=0.):
     val_losses, val_accs = [], []
 
     for epoch in range(n_epochs):
-        train_loss, train_acc = train_epoch(model, train_loader, optimizer, criterion)
-        val_loss, val_acc = evaluate(model, val_loader, criterion)
+        train_acc, train_loss = train_epoch(model, train_loader, optimizer, criterion)
+        val_acc, val_loss = evaluate(model, val_loader, criterion)
         train_losses.append(train_loss)
         train_accs.append(train_acc)
         val_losses.append(val_loss)
         val_accs.append(val_acc)
-        print("Epoch {}: Train Loss: {} Train Acc: {} Val Loss: {} Val Acc: {}".format(epoch + 1, train_loss, train_acc,
-                                                                                       val_loss, val_acc))
+        print("Epoch %d: Train Loss: %.2f Train Acc: %.2f Val Loss: %.2f Val Acc: %.2f" %
+              (epoch + 1, train_loss, train_acc, val_loss, val_acc))
 
 
 def train_log_linear_with_one_hot():
