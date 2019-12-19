@@ -107,7 +107,7 @@ def create_or_load_slim_w2v(words_list, cache_w2v=False):
     return w2v_emb_dict
 
 
-def get_w2v_average(sent, word_to_vec):
+def get_w2v_average(sent, word_to_vec, embedding_dim):
     """
     This method gets a sentence and returns the average word embedding of the words consisting
     the sentence.
@@ -232,13 +232,13 @@ class DataManager():
 
             self.sent_func_kwargs = {"seq_len": SEQ_LEN,
                                      "word_to_vec": create_or_load_slim_w2v(words_list, True),
-                                     "emedding_dim": embedding_dim
+                                     "embedding_dim": embedding_dim
                                      }
         elif data_type == W2V_AVERAGE:
             self.sent_func = get_w2v_average
             words_list = list(self.sentiment_dataset.get_word_counts().keys())
             self.sent_func_kwargs = {"word_to_vec": create_or_load_slim_w2v(words_list, True),
-                                     "emedding_dim": embedding_dim
+                                     "embedding_dim": embedding_dim
                                      }
         else:
             raise ValueError("invalid data_type: {}".format(data_type))
