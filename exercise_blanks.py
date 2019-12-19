@@ -525,7 +525,7 @@ def train_log_linear_with_w2v():
     representation.
     """
     confs = [("LogLinearW2V with w=0", 0), ("LogLinearW2V with w=0.0001", 0.0001), ("LogLinearW2V with w=0.001", 0.001)]
-    data_manager = DataManager(W2V_AVERAGE, batch_size=64, 300)
+    data_manager = DataManager(W2V_AVERAGE, batch_size=64, embedding_dim=300)
     best_acc = 0
     best_results = None
     best_title = ""
