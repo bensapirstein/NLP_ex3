@@ -33,11 +33,11 @@
       <file leaf-file-name="exercise_blanks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="109" column="57" lean-forward="false" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+            <state relative-caret-position="128">
+              <caret line="109" column="37" lean-forward="false" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="37" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#15547#15726#0" expanded="false" />
+                <element signature="e#15527#15706#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -230,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576754642465</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="all">
+      <created>1576755219877</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576755219877</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -349,7 +356,7 @@
           <caret line="447" column="0" lean-forward="true" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#15547#15726#0" expanded="false" />
+            <element signature="e#15527#15706#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -378,7 +385,7 @@
           <caret line="339" column="17" lean-forward="false" selection-start-line="339" selection-start-column="17" selection-end-line="339" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#15547#15726#0" expanded="false" />
+            <element signature="e#15527#15706#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -407,7 +414,7 @@
           <caret line="339" column="17" lean-forward="false" selection-start-line="339" selection-start-column="17" selection-end-line="339" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#15547#15726#0" expanded="false" />
+            <element signature="e#15527#15706#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -428,7 +435,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#15547#15726#0" expanded="false" />
+            <element signature="e#15527#15706#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -493,11 +500,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="109" column="57" lean-forward="false" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+        <state relative-caret-position="128">
+          <caret line="109" column="37" lean-forward="false" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="37" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#15547#15726#0" expanded="false" />
+            <element signature="e#15527#15706#0" expanded="false" />
           </folding>
         </state>
       </provider>

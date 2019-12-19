@@ -107,7 +107,7 @@ def create_or_load_slim_w2v(words_list, cache_w2v=False):
     return w2v_emb_dict
 
 
-def get_w2v_average(sent, word_to_vec, embedding_dim=None):
+def get_w2v_average(sent, word_to_vec):
     """
     This method gets a sentence and returns the average word embedding of the words consisting
     the sentence.
