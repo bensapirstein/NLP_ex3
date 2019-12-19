@@ -476,7 +476,7 @@ def train_log_linear_with_one_hot():
             best_model = model
             best_title = title
 
-        plots(title, *results)
+        plots(title, *results[:4])
 
     print("Best model is " + best_title)
     print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
