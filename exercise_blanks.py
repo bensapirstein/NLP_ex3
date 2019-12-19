@@ -116,7 +116,7 @@ def get_w2v_average(sent, word_to_vec, embedding_dim):
     :param embedding_dim: the dimension of the word embedding vectors
     :return The average embedding vector as numpy ndarray.
     """
-    vecs = np.array([word_to_vec[word] for word in sent.text])
+    vecs = np.array([word_to_vec.get(word, np.zeros(embedding_dim)) for word in sent.text])
     return np.average(vecs, axis=0)
 
 
@@ -525,7 +525,7 @@ def train_log_linear_with_w2v():
     representation.
     """
     confs = [("LogLinearW2V with w=0", 0), ("LogLinearW2V with w=0.0001", 0.0001), ("LogLinearW2V with w=0.001", 0.001)]
-    data_manager = DataManager(W2V_AVERAGE, batch_size=64)
+    data_manager = DataManager(W2V_AVERAGE, batch_size=64, 300)
     best_acc = 0
     best_results = None
     best_title = ""
