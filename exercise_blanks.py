@@ -510,7 +510,7 @@ def train_log_linear_with_w2v():
     best_title = ""
     for (title, decay_rate) in confs:
         model = LogLinear(data_manager.get_input_shape()[0])
-        results = train_model(model, data_manager, 1, 0.01, decay_rate)
+        results = train_model(model, data_manager, 20, 0.01, decay_rate)
         if results[3][-1] > best_acc:
             best_acc = results[3][-1]
             best_results = results
