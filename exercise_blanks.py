@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 # ------------------------------------------- Constants ----------------------------------------
 
-SEQ_LEN = 52
+SEQ_LEN = 10
 W2V_EMBEDDING_DIM = 300
 
 ONEHOT_AVERAGE = "onehot_average"
@@ -164,7 +164,10 @@ def sentence_to_embedding(sent, word_to_vec, seq_len, embedding_dim=300):
     :param embedding_dim: the dimension of the w2v embedding
     :return: numpy ndarray of shape (seq_len, embedding_dim) with the representation of the sentence
     """
-    return
+    vecs = np.array([word_to_vec.get(word, np.zeros(embedding_dim)) for word in sent.text])
+    if len(vecs) >= seq_len:
+        return vecs[:seq_len].astype(np.double)
+    return np.concatenate((vecs, np.zeros((seq_len - len(vecs), embedding_dim)))).astype(np.double)
 
 
 class OnlineDataset(Dataset):
@@ -278,13 +281,21 @@ class LSTM(nn.Module):
     """
 
     def __init__(self, embedding_dim, hidden_dim, n_layers, dropout):
-        return
+        super(LSTM, self).__init__()
+        self.hidden_dim = hidden_dim
+        self.dropout = dropout
+        self.batch_size = 64
+        self.lstm = nn.LSTM(embedding_dim, hidden_dim, n_layers, batch_first=True, bidirectional=True, dropout=dropout)
+        self.hidden2sent = nn.Linear(hidden_dim * 2, 1)
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, text):
-        return
+        # text is of shape (seq_len=10,batch_size,input_size)
+        lstm_out, _ = self.lstm(text)
+        return self.hidden2sent(lstm_out[:,-1,:]).squeeze()
 
     def predict(self, text):
-        return
+        return self.sigmoid(self.forward(text))
 
 
 class LogLinear(nn.Module):
@@ -486,7 +497,13 @@ def train_lstm_with_w2v():
     """
     Here comes your code for training and evaluation of the LSTM model.
     """
-    return
+    data_manager = DataManager(W2V_SEQUENCE, batch_size=64, embedding_dim=300)
+    model = LSTM(data_manager.get_input_shape()[1], 100, 1, 0.5)
+    results = train_model(model, data_manager, n_epochs=4, lr=0.001, weight_decay=0.0001)
+
+    plots("LSTMW2V with w=0.0001", *results[:4])
+
+    print("Test Loss: %d Test Acc: %d" % (results[4], results[5]))
 
 
 if __name__ == '__main__':
@@ -494,5 +511,5 @@ if __name__ == '__main__':
     # plots("LogLinear with w=0.0001", w1_train_losses, w1_train_accs, w1_val_losses, w1_val_accs)
     # plots("LogLinear with w=0.001", w2_train_losses, w2_train_accs, w2_val_losses, w2_val_accs)
     # train_log_linear_with_one_hot()
-    train_log_linear_with_w2v()
-    # train_lstm_with_w2v()
+    # train_log_linear_with_w2v()
+    train_lstm_with_w2v()
