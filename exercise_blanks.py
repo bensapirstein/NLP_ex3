@@ -423,7 +423,7 @@ def train_model(model, data_manager, n_epochs, lr, weight_decay=0.):
     print("Test Loss: %.3f Test Acc: %.2f" % (test_loss, test_acc))
 
     NP_acc, RW_acc = special_cases_acc(data_manager, model)
-
+    print("Negated Polarity Acc: %d Rare Words Acc: %d" % (NP_acc, RW_acc))
     return train_losses, train_accs, val_losses, val_accs, test_loss, test_acc, NP_acc, RW_acc
 
 
@@ -485,7 +485,7 @@ def train_log_linear_with_one_hot():
     best_title = ""
     for (title, decay_rate) in confs:
         model = LogLinear(data_manager.get_input_shape()[0])
-        results = train_model(model, data_manager, 2, 0.01, decay_rate)
+        results = train_model(model, data_manager, 20, 0.01, decay_rate)
         if results[3][-1] > best_acc:
             best_acc = results[3][-1]
             best_results = results
@@ -510,7 +510,7 @@ def train_log_linear_with_w2v():
     best_title = ""
     for (title, decay_rate) in confs:
         model = LogLinear(data_manager.get_input_shape()[0])
-        results = train_model(model, data_manager, 20, 0.01, decay_rate)
+        results = train_model(model, data_manager, 1, 0.01, decay_rate)
         if results[3][-1] > best_acc:
             best_acc = results[3][-1]
             best_results = results
@@ -520,6 +520,7 @@ def train_log_linear_with_w2v():
 
     print("Best model is " + best_title)
     print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
+    print("Negated Polarity Acc: %d Rare Words Acc: %d" % (best_results[6], best_results[7]))
 
 
 def train_lstm_with_w2v():

@@ -33,11 +33,11 @@
       <file leaf-file-name="exercise_blanks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="543" column="27" lean-forward="true" selection-start-line="543" selection-start-column="27" selection-end-line="543" selection-end-column="27" />
+            <state relative-caret-position="171">
+              <caret line="512" column="52" lean-forward="false" selection-start-line="512" selection-start-column="52" selection-end-line="512" selection-end-column="52" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#17451#18245#0" expanded="false" />
+                <element signature="e#17526#18320#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -306,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576939777131</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="LSTM">
+      <created>1576939819847</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576939819847</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -443,7 +450,7 @@
           <caret line="450" column="16" lean-forward="false" selection-start-line="450" selection-start-column="16" selection-end-line="450" selection-end-column="16" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17451#18245#0" expanded="false" />
+            <element signature="e#17526#18320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -472,7 +479,7 @@
           <caret line="447" column="0" lean-forward="true" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17451#18245#0" expanded="false" />
+            <element signature="e#17526#18320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -501,7 +508,7 @@
           <caret line="339" column="17" lean-forward="false" selection-start-line="339" selection-start-column="17" selection-end-line="339" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17451#18245#0" expanded="false" />
+            <element signature="e#17526#18320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -530,7 +537,7 @@
           <caret line="339" column="17" lean-forward="false" selection-start-line="339" selection-start-column="17" selection-end-line="339" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17451#18245#0" expanded="false" />
+            <element signature="e#17526#18320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -551,7 +558,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17451#18245#0" expanded="false" />
+            <element signature="e#17526#18320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -621,11 +628,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="543" column="27" lean-forward="true" selection-start-line="543" selection-start-column="27" selection-end-line="543" selection-end-column="27" />
+        <state relative-caret-position="171">
+          <caret line="512" column="52" lean-forward="false" selection-start-line="512" selection-start-column="52" selection-end-line="512" selection-end-column="52" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17451#18245#0" expanded="false" />
+            <element signature="e#17526#18320#0" expanded="false" />
           </folding>
         </state>
       </provider>
