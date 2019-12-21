@@ -521,6 +521,7 @@ def train_log_linear_with_w2v():
     print("Best model is " + best_title)
     print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (best_results[6], best_results[7]))
+    return best_results[4:]
 
 
 def train_lstm_with_w2v():
@@ -534,12 +535,17 @@ def train_lstm_with_w2v():
     plots("LSTMW2V with w=0.0001", *results[:4])
 
     print("Test Loss: %d Test Acc: %d" % (results[4], results[5]))
+    print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (results[6], results[7]))
+    return results[4:]
 
 
 if __name__ == '__main__':
     # plots("LogLinear with w=0", w0_train_losses, w0_train_accs, w0_val_losses, w0_val_accs)
     # plots("LogLinear with w=0.0001", w1_train_losses, w1_train_accs, w1_val_losses, w1_val_accs)
     # plots("LogLinear with w=0.001", w2_train_losses, w2_train_accs, w2_val_losses, w2_val_accs)
-    # train_log_linear_with_one_hot()
-    train_log_linear_with_w2v()
-    # train_lstm_with_w2v()
+    test_loss_1, test_acc_1, NP_acc_1, RW_acc_1 = train_log_linear_with_one_hot()
+    test_loss_2, test_acc_2, NP_acc_2, RW_acc_2 = train_log_linear_with_w2v()
+    test_loss_3, test_acc_3, NP_acc_3, RW_acc_3 = train_lstm_with_w2v()
+    print("LogLinearHotVector results:")
+    print("Test Loss: %d Test Acc: %d" % (test_loss_1, test_acc_1))
+    print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (NP_acc_1, RW_acc_1))
