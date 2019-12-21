@@ -419,8 +419,27 @@ def train_model(model, data_manager, n_epochs, lr, weight_decay=0.):
 
     test_acc, test_loss = evaluate(model, test_loader, criterion)
     print("Test Loss: %.3f Test Acc: %.2f" % (test_loss, test_acc))
-    return train_losses, train_accs, val_losses, val_accs, test_loss, test_acc
 
+    NP_acc, RW_acc = special_cases_acc(data_manager, model)
+
+    return train_losses, train_accs, val_losses, val_accs, test_loss, test_acc, NP_acc, RW_acc
+
+def special_cases_acc(data_manager, model):
+    test_sents = data_manager.sentences[TEST]
+    test_labels = data_manager.get_labels(TEST)
+    NP_sents_idxs = data_loader.get_negated_polarity_examples(test_sents)
+    NP_x = test_sents[NP_sents_idxs]
+    NP_y = test_labels[NP_sents_idxs]
+    pred = model.predict(NP_x)
+    NP_acc = binary_accuracy(pred, NP_y)
+
+    RW_sents_idxs = data_loader.get_rare_words_examples(test_sents , data_manager.sentiment_dataset)
+    RW_x = test_sents[RW_sents_idxs]
+    RW_y = test_labels[RW_sents_idxs]
+    pred = model.predict(RW_x)
+    RW_acc = binary_accuracy(pred, RW_y)
+
+    return NP_acc, RW_acc
 
 def plots(title, train_losses, train_accs, val_losses, val_accs):
     plt.plot(range(1, len(train_accs) + 1), train_accs)
@@ -457,7 +476,7 @@ def train_log_linear_with_one_hot():
     best_title = ""
     for (title, decay_rate) in confs:
         model = LogLinear(data_manager.get_input_shape()[0])
-        results = train_model(model, data_manager, 20, 0.01, decay_rate)
+        results = train_model(model, data_manager, 2, 0.01, decay_rate)
         if results[3][-1] > best_acc:
             best_acc = results[3][-1]
             best_results = results
@@ -467,6 +486,7 @@ def train_log_linear_with_one_hot():
 
     print("Best model is " + best_title)
     print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
+    print("Negated Polarity Acc: %d Rare Words Acc: %d" % (best_results[6], best_results[7]))
 
 
 def train_log_linear_with_w2v():
@@ -510,6 +530,6 @@ if __name__ == '__main__':
     # plots("LogLinear with w=0", w0_train_losses, w0_train_accs, w0_val_losses, w0_val_accs)
     # plots("LogLinear with w=0.0001", w1_train_losses, w1_train_accs, w1_val_losses, w1_val_accs)
     # plots("LogLinear with w=0.001", w2_train_losses, w2_train_accs, w2_val_losses, w2_val_accs)
-    # train_log_linear_with_one_hot()
+    train_log_linear_with_one_hot()
     # train_log_linear_with_w2v()
-    train_lstm_with_w2v()
+    # train_lstm_with_w2v()
