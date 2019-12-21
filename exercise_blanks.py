@@ -292,7 +292,7 @@ class LSTM(nn.Module):
     def forward(self, text):
         # text is of shape (seq_len=10,batch_size,input_size)
         lstm_out, _ = self.lstm(text)
-        return self.hidden2sent(lstm_out[:,-1,:]).squeeze()
+        return self.hidden2sent(lstm_out[:, -1, :]).squeeze()
 
     def predict(self, text):
         return self.sigmoid(self.forward(text))
@@ -329,6 +329,7 @@ def binary_accuracy(preds, y):
     return np.count_nonzero(preds.round() == y) / len(y)
 
 
+
 def train_epoch(model, data_iterator, optimizer, criterion):
     """
     This method operates one epoch (pass over the whole train set) of training of the given model,
@@ -350,6 +351,7 @@ def train_epoch(model, data_iterator, optimizer, criterion):
         losses.append(loss.item())
         accs.append(acc)
         optimizer.step()
+
         if i % 100 == 0:
             print("loss at step %d: %.4f" % (i + 1, loss.item()))
     return np.average(accs), np.average(losses)
@@ -424,22 +426,29 @@ def train_model(model, data_manager, n_epochs, lr, weight_decay=0.):
 
     return train_losses, train_accs, val_losses, val_accs, test_loss, test_acc, NP_acc, RW_acc
 
+
 def special_cases_acc(data_manager, model):
     test_sents = data_manager.sentences[TEST]
+    test_batches = list(data_manager.get_torch_iterator(TEST))
+    test_vectors = []
+    for batch in test_batches:
+        for vector in batch[0]:
+            test_vectors.append(vector)
     test_labels = data_manager.get_labels(TEST)
     NP_sents_idxs = data_loader.get_negated_polarity_examples(test_sents)
-    NP_x = test_sents[NP_sents_idxs]
-    NP_y = test_labels[NP_sents_idxs]
-    pred = model.predict(NP_x)
+    NP_x = [test_vectors[i] for i in NP_sents_idxs]
+    NP_y = [test_labels[i] for i in NP_sents_idxs]
+    pred = np.array([model.predict(NP_x[i].float()).detach().numpy() for i in range(len(NP_x))])
     NP_acc = binary_accuracy(pred, NP_y)
 
-    RW_sents_idxs = data_loader.get_rare_words_examples(test_sents , data_manager.sentiment_dataset)
-    RW_x = test_sents[RW_sents_idxs]
-    RW_y = test_labels[RW_sents_idxs]
-    pred = model.predict(RW_x)
+    RW_sents_idxs = data_loader.get_rare_words_examples(test_sents, data_manager.sentiment_dataset)
+    RW_x = [test_vectors[i] for i in RW_sents_idxs]
+    RW_y = [test_labels[i] for i in RW_sents_idxs]
+    pred = np.array([model.predict(RW_x[i].float()).detach().numpy() for i in range(len(RW_x))])
     RW_acc = binary_accuracy(pred, RW_y)
 
     return NP_acc, RW_acc
+
 
 def plots(title, train_losses, train_accs, val_losses, val_accs):
     plt.plot(range(1, len(train_accs) + 1), train_accs)

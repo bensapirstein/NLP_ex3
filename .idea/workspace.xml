@@ -13,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/NLP_sentiment_detector$exercise_blanks.coverage" NAME="exercise_blanks Coverage Results" MODIFIED="1576937234426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NLP_sentiment_detector$exercise_blanks.coverage" NAME="exercise_blanks Coverage Results" MODIFIED="1576939712301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nlp_ex3$exercise_blanks.coverage" NAME="exercise_blanks Coverage Results" MODIFIED="1576682469357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -33,12 +33,22 @@
       <file leaf-file-name="exercise_blanks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="478" column="52" lean-forward="false" selection-start-line="478" selection-start-column="52" selection-end-line="478" selection-end-column="52" />
+            <state relative-caret-position="-126">
+              <caret line="412" column="85" lean-forward="false" selection-start-line="412" selection-start-column="85" selection-end-line="412" selection-end-column="85" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#17070#17864#0" expanded="false" />
+                <element signature="e#17451#18245#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataloader.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python36/Lib/site-packages/torch/utils/data/dataloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="715" column="0" lean-forward="false" selection-start-line="715" selection-start-column="0" selection-end-line="715" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -282,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576933934782</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="LSTM">
+      <created>1576937934034</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1576937934034</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -293,7 +310,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -301,7 +318,7 @@
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -327,16 +344,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/exercise_blanks.py</url>
-          <line>345</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/exercise_blanks.py</url>
           <line>294</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/exercise_blanks.py</url>
+          <line>440</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -348,47 +365,47 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>lstm_out[:,-1,:]</expression-string>
+        <expression-string>np.array([model.predict(NP_x[i].float()) for i in range(len(NP_x))])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.hidden2sent(lstm_out[:,-1,:])</expression-string>
+        <expression-string>model.predict(NP_x[0].float()).detach().numpy()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.hidden2sent(lstm_out)</expression-string>
+        <expression-string>model.predict(NP_x[0].float()).numpy()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.hidden2sent(lstm_out[-1])</expression-string>
+        <expression-string>model.predict(NP_x[0].float()).eval()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.dataset[0]</expression-string>
+        <expression-string>model.predict(NP_x[0].float())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.dataset[i]</expression-string>
+        <expression-string>model.predict(NP_x[i].float())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.concatenate((vecs, np.zeros((seq_len - len(vecs), embedding_dim))))</expression-string>
+        <expression-string>[model.predict(NP_x[i].float()) for i in range(len(NP_x))]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>vecs</expression-string>
+        <expression-string>NP_x</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.zeros((seq_len - len(vecs), embedding_dim))</expression-string>
+        <expression-string>model.predict(NP_x[0])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -419,7 +436,7 @@
           <caret line="450" column="16" lean-forward="false" selection-start-line="450" selection-start-column="16" selection-end-line="450" selection-end-column="16" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17070#17864#0" expanded="false" />
+            <element signature="e#17451#18245#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -448,7 +465,7 @@
           <caret line="447" column="0" lean-forward="true" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17070#17864#0" expanded="false" />
+            <element signature="e#17451#18245#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -477,7 +494,7 @@
           <caret line="339" column="17" lean-forward="false" selection-start-line="339" selection-start-column="17" selection-end-line="339" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17070#17864#0" expanded="false" />
+            <element signature="e#17451#18245#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -506,7 +523,7 @@
           <caret line="339" column="17" lean-forward="false" selection-start-line="339" selection-start-column="17" selection-end-line="339" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17070#17864#0" expanded="false" />
+            <element signature="e#17451#18245#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -527,7 +544,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17070#17864#0" expanded="false" />
+            <element signature="e#17451#18245#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -569,14 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python36/Lib/site-packages/torch/utils/data/dataloader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python36/Lib/site-packages/torch/nn/modules/module.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -595,13 +604,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python36/Lib/site-packages/torch/utils/data/dataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="715" column="0" lean-forward="false" selection-start-line="715" selection-start-column="0" selection-end-line="715" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="478" column="52" lean-forward="false" selection-start-line="478" selection-start-column="52" selection-end-line="478" selection-end-column="52" />
+        <state relative-caret-position="-126">
+          <caret line="412" column="85" lean-forward="false" selection-start-line="412" selection-start-column="85" selection-end-line="412" selection-end-column="85" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#17070#17864#0" expanded="false" />
+            <element signature="e#17451#18245#0" expanded="false" />
           </folding>
         </state>
       </provider>
