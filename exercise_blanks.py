@@ -380,7 +380,6 @@ def evaluate(model, data_iterator, criterion):
 
 def get_predictions_for_data(model, data_iter):
     """
-
     This function should iterate over all batches of examples from data_iter and return all of the models
     predictions as a numpy ndarray or torch tensor (or list if you prefer). the prediction should be in the
     same order of the examples returned by data_iter.
