@@ -496,6 +496,7 @@ def train_log_linear_with_one_hot():
     print("Best model is " + best_title)
     print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (best_results[6], best_results[7]))
+    return best_results[4:]
 
 
 def train_log_linear_with_w2v():
