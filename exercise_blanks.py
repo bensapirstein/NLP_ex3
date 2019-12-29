@@ -442,9 +442,9 @@ def special_cases_acc(data_manager, model):
     NP_acc = binary_accuracy(pred, NP_y)
 
     RW_sents_idxs = data_loader.get_rare_words_examples(test_sents, data_manager.sentiment_dataset)
-    RW_x = [test_vectors[i] for i in RW_sents_idxs]
+    RW_x = [test_vectors[i].float() for i in RW_sents_idxs]
     RW_y = [test_labels[i] for i in RW_sents_idxs]
-    pred = np.array([model.predict(RW_x[i].float()).detach().numpy() for i in range(len(RW_x))])
+    pred = model.predict(torch.stack(RW_x)).detach().numpy()
     RW_acc = binary_accuracy(pred, RW_y)
 
     return NP_acc, RW_acc
