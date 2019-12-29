@@ -314,6 +314,7 @@ class LogLinear(nn.Module):
     def predict(self, x):
         return self.sigmoid(self.forward(x))
 
+import tensorflow as tf
 
 # ------------------------- training functions -------------
 
@@ -436,9 +437,9 @@ def special_cases_acc(data_manager, model):
             test_vectors.append(vector)
     test_labels = data_manager.get_labels(TEST)
     NP_sents_idxs = data_loader.get_negated_polarity_examples(test_sents)
-    NP_x = [test_vectors[i] for i in NP_sents_idxs]
+    NP_x = [test_vectors[i].float() for i in NP_sents_idxs]
     NP_y = [test_labels[i] for i in NP_sents_idxs]
-    pred = np.array([model.predict(NP_x[i].float()).detach().numpy() for i in range(len(NP_x))])
+    pred = model.predict(torch.stack(NP_x)).detach().numpy()
     NP_acc = binary_accuracy(pred, NP_y)
 
     RW_sents_idxs = data_loader.get_rare_words_examples(test_sents, data_manager.sentiment_dataset)
