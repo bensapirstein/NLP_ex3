@@ -494,7 +494,7 @@ def train_log_linear_with_one_hot():
         plots(title, *results[:4])
 
     print("Best model is " + best_title)
-    print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
+    print("Test Loss: %.2f Test Acc: %.2f" % (best_results[4], best_results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (best_results[6], best_results[7]))
     return best_results[4:]
 
@@ -520,7 +520,7 @@ def train_log_linear_with_w2v():
         plots(title, *results[:4])
 
     print("Best model is " + best_title)
-    print("Test Loss: %d Test Acc: %d" % (best_results[4], best_results[5]))
+    print("Test Loss: %2.f Test Acc: %2.f" % (best_results[4], best_results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (best_results[6], best_results[7]))
     return best_results[4:]
 
@@ -535,7 +535,7 @@ def train_lstm_with_w2v():
 
     plots("LSTMW2V with w=0.0001", *results[:4])
 
-    print("Test Loss: %d Test Acc: %d" % (results[4], results[5]))
+    print("Test Loss: %2.f Test Acc: %2.f" % (results[4], results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (results[6], results[7]))
     return results[4:]
 
@@ -544,19 +544,19 @@ if __name__ == '__main__':
     # plots("LogLinear with w=0", w0_train_losses, w0_train_accs, w0_val_losses, w0_val_accs)
     # plots("LogLinear with w=0.0001", w1_train_losses, w1_train_accs, w1_val_losses, w1_val_accs)
     # plots("LogLinear with w=0.001", w2_train_losses, w2_train_accs, w2_val_losses, w2_val_accs)
-    out = open("results.txt","w")
-    test_loss_1, test_acc_1, NP_acc_1, RW_acc_1 = train_log_linear_with_one_hot()
-    out.write("LogLinearHotVector results:\n")
-    out.write("Test Loss: %d Test Acc: %d\n" % (test_loss_1, test_acc_1))
-    out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_1, RW_acc_1))
-
-    test_loss_2, test_acc_2, NP_acc_2, RW_acc_2 = train_log_linear_with_w2v()
-    out.write("LogLinearW2V results:\n")
-    out.write("Test Loss: %d Test Acc: %d\n" % (test_loss_2, test_acc_2))
-    out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_2, RW_acc_2))
+    out = open("results.txt","w+")
+    # test_loss_1, test_acc_1, NP_acc_1, RW_acc_1 = train_log_linear_with_one_hot()
+    # out.write("LogLinearHotVector results:\n")
+    # out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_1, test_acc_1))
+    # out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_1, RW_acc_1))
+    #
+    # test_loss_2, test_acc_2, NP_acc_2, RW_acc_2 = train_log_linear_with_w2v()
+    # out.write("LogLinearW2V results:\n")
+    # out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_2, test_acc_2))
+    # out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_2, RW_acc_2))
 
     test_loss_3, test_acc_3, NP_acc_3, RW_acc_3 = train_lstm_with_w2v()
     out.write("LSTM results:\n")
-    out.write("Test Loss: %d Test Acc: %d\n" % (test_loss_3, test_acc_3))
+    out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_3, test_acc_3))
     out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_3, RW_acc_3))
     out.close()

@@ -33,8 +33,8 @@
       <file leaf-file-name="exercise_blanks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="561" column="15" lean-forward="true" selection-start-line="561" selection-start-column="15" selection-end-line="561" selection-end-column="15" />
+            <state relative-caret-position="350">
+              <caret line="554" column="44" lean-forward="false" selection-start-line="554" selection-start-column="44" selection-end-line="554" selection-end-column="44" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
                 <element signature="e#17530#18324#0" expanded="false" />
@@ -67,7 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_w</find>
       <find>average_one_hots</find>
       <find>Sentence</find>
       <find>class sentence</find>
@@ -97,6 +96,7 @@
       <find>label</find>
       <find>get_nega</find>
       <find>get_labels</find>
+      <find>test_acc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -362,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577642115624</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Negated polarity and Rare words comparison">
+      <created>1577642709145</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1577642709145</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -715,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="561" column="15" lean-forward="true" selection-start-line="561" selection-start-column="15" selection-end-line="561" selection-end-column="15" />
+        <state relative-caret-position="350">
+          <caret line="554" column="44" lean-forward="false" selection-start-line="554" selection-start-column="44" selection-end-line="554" selection-end-column="44" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
             <element signature="e#17530#18324#0" expanded="false" />
