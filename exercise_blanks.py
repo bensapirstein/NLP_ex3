@@ -19,6 +19,7 @@ W2V_EMBEDDING_DIM = 300
 ONEHOT_AVERAGE = "onehot_average"
 W2V_AVERAGE = "w2v_average"
 W2V_SEQUENCE = "w2v_sequence"
+W2V_SEQUENCE_2 = "w2v_sequence_2"
 
 TRAIN = "train"
 VAL = "val"
@@ -154,6 +155,24 @@ def get_word_to_ind(words_list):
     return {word: i for i, word in enumerate(set(words_list))}
 
 
+def sentence_to_embedding_2(sent, word_to_vec, seq_len, embedding_dim=300):
+    """
+    this method gets a sentence and a word to vector mapping, and returns a list containing the
+    words embeddings of the tokens in the sentence.
+    :param sent: a sentence object
+    :param word_to_vec: a word to vector mapping.
+    :param seq_len: the fixed length for which the sentence will be mapped to.
+    :param embedding_dim: the dimension of the w2v embedding
+    :return: numpy ndarray of shape (seq_len, embedding_dim) with the representation of the sentence
+    """
+    vecs = np.array([word_to_vec.get(word, np.zeros(embedding_dim)) for word in sent.text])
+    if len(vecs) > seq_len:
+        avg_end = np.expand_dims(np.average(vecs[seq_len:], axis=0), axis=0)
+        res =  np.append(vecs[:seq_len - 1], avg_end, axis=0).astype(np.double)
+        return res
+    return np.concatenate((vecs, np.zeros((seq_len - len(vecs), embedding_dim)))).astype(np.double)
+
+
 def sentence_to_embedding(sent, word_to_vec, seq_len, embedding_dim=300):
     """
     this method gets a sentence and a word to vector mapping, and returns a list containing the
@@ -237,6 +256,13 @@ class DataManager():
                                      "word_to_vec": create_or_load_slim_w2v(words_list, True),
                                      "embedding_dim": embedding_dim
                                      }
+        elif data_type == W2V_SEQUENCE_2:
+            self.sent_func = sentence_to_embedding_2
+
+            self.sent_func_kwargs = {"seq_len": SEQ_LEN,
+                                     "word_to_vec": create_or_load_slim_w2v(words_list, True),
+                                     "embedding_dim": embedding_dim
+                                     }
         elif data_type == W2V_AVERAGE:
             self.sent_func = get_w2v_average
             words_list = list(self.sentiment_dataset.get_word_counts().keys())
@@ -314,7 +340,9 @@ class LogLinear(nn.Module):
     def predict(self, x):
         return self.sigmoid(self.forward(x))
 
+
 import tensorflow as tf
+
 
 # ------------------------- training functions -------------
 
@@ -328,7 +356,6 @@ def binary_accuracy(preds, y):
     :return: scalar value - (<number of accurate predictions> / <number of examples>)
     """
     return np.count_nonzero(preds.round() == y) / len(y)
-
 
 
 def train_epoch(model, data_iterator, optimizer, criterion):
@@ -539,24 +566,37 @@ def train_lstm_with_w2v():
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (results[6], results[7]))
     return results[4:]
 
+def train_lstm_with_w2v_2():
+    """
+    Here comes your code for training and evaluation of the LSTM model.
+    """
+    data_manager = DataManager(W2V_SEQUENCE_2, batch_size=64, embedding_dim=300)
+    model = LSTM(data_manager.get_input_shape()[1], 100, 1, 0.5)
+    results = train_model(model, data_manager, n_epochs=4, lr=0.001, weight_decay=0.0001)
+
+    plots("LSTMW2V_2 with w=0.0001", *results[:4])
+
+    print("Test Loss: %.2f Test Acc: %.2f" % (results[4], results[5]))
+    print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (results[6], results[7]))
+    return results[4:]
 
 if __name__ == '__main__':
     # plots("LogLinear with w=0", w0_train_losses, w0_train_accs, w0_val_losses, w0_val_accs)
     # plots("LogLinear with w=0.0001", w1_train_losses, w1_train_accs, w1_val_losses, w1_val_accs)
     # plots("LogLinear with w=0.001", w2_train_losses, w2_train_accs, w2_val_losses, w2_val_accs)
-    out = open("results.txt","w+")
-    test_loss_1, test_acc_1, NP_acc_1, RW_acc_1 = train_log_linear_with_one_hot()
-    out.write("LogLinearHotVector results:\n")
-    out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_1, test_acc_1))
-    out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_1, RW_acc_1))
+    out = open("results.txt", "w+")
+    # test_loss_1, test_acc_1, NP_acc_1, RW_acc_1 = train_log_linear_with_one_hot()
+    # out.write("LogLinearHotVector results:\n")
+    # out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_1, test_acc_1))
+    # out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_1, RW_acc_1))
+    #
+    # test_loss_2, test_acc_2, NP_acc_2, RW_acc_2 = train_log_linear_with_w2v()
+    # out.write("LogLinearW2V results:\n")
+    # out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_2, test_acc_2))
+    # out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_2, RW_acc_2))
 
-    test_loss_2, test_acc_2, NP_acc_2, RW_acc_2 = train_log_linear_with_w2v()
-    out.write("LogLinearW2V results:\n")
-    out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_2, test_acc_2))
-    out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_2, RW_acc_2))
-
-    test_loss_3, test_acc_3, NP_acc_3, RW_acc_3 = train_lstm_with_w2v()
-    out.write("LSTM results:\n")
+    test_loss_3, test_acc_3, NP_acc_3, RW_acc_3 = train_lstm_with_w2v_2()
+    out.write("LSTM2 results:\n")
     out.write("Test Loss: %.2f Test Acc: %.2f\n" % (test_loss_3, test_acc_3))
     out.write("Negated Polarity Acc: %.2f Rare Words Acc: %.2f\n" % (NP_acc_3, RW_acc_3))
     out.close()
