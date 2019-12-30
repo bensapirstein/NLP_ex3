@@ -33,8 +33,8 @@
       <file leaf-file-name="exercise_blanks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="447" column="0" lean-forward="false" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
+            <state relative-caret-position="998">
+              <caret line="522" column="40" lean-forward="false" selection-start-line="522" selection-start-column="40" selection-end-line="522" selection-end-column="40" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
                 <element signature="e#17497#18291#0" expanded="false" />
@@ -394,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577658434399</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Negated polarity and Rare words comparison">
+      <created>1577658522230</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1577658522230</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -747,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise_blanks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="447" column="0" lean-forward="false" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
+        <state relative-caret-position="998">
+          <caret line="522" column="40" lean-forward="false" selection-start-line="522" selection-start-column="40" selection-end-line="522" selection-end-column="40" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
             <element signature="e#17497#18291#0" expanded="false" />

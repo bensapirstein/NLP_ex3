@@ -520,7 +520,7 @@ def train_log_linear_with_w2v():
         plots(title, *results[:4])
 
     print("Best model is " + best_title)
-    print("Test Loss: %2.f Test Acc: %2.f" % (best_results[4], best_results[5]))
+    print("Test Loss: %.2f Test Acc: %.2f" % (best_results[4], best_results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (best_results[6], best_results[7]))
     return best_results[4:]
 
@@ -535,7 +535,7 @@ def train_lstm_with_w2v():
 
     plots("LSTMW2V with w=0.0001", *results[:4])
 
-    print("Test Loss: %2.f Test Acc: %2.f" % (results[4], results[5]))
+    print("Test Loss: %.2f Test Acc: %.2f" % (results[4], results[5]))
     print("Negated Polarity Acc: %.2f Rare Words Acc: %.2f" % (results[6], results[7]))
     return results[4:]
 
